@@ -20,7 +20,7 @@ url_path = f"/api/v2/tickets/{ticket_id}.json"
 full_url = f"https://{subdomain}.zendesk.com{url_path}"
 print(f"Fazendo requisição para: {full_url}")
 
-# Contexto SSL seguro com verificação de certificado
+# SSL seguro 
 context = ssl.create_default_context()
 context.load_verify_locations(cafile=certifi.where())
 
@@ -45,7 +45,7 @@ if response.status == 200:
     data = json.loads(response.read().decode())
     ticket = data.get("ticket", {})
 
-    # Filtrar campos relevantes
+    # Filtrar campos relevantes usando placeholders
     filtered_data = {
         "ID": ticket.get("id"),
         "Criado em": ticket.get("created_at"),
@@ -54,11 +54,11 @@ if response.status == 200:
         "Prioridade": ticket.get("priority"),
         "Assunto": ticket.get("subject"),
         "Descrição": ticket.get("description"),
-        "Solicitante ID": ticket.get("requester_id"),
-        "Responsável ID": ticket.get("assignee_id"),
-        "Tags": ticket.get("tags"),
-        "Nome do Cliente": next((field["value"] for field in ticket.get("custom_fields", []) if field["id"] == 123456789), "Não informado"),
-        "CPF": next((field["value"] for field in ticket.get("custom_fields", []) if field["id"] == 987654321), "Não informado"),
+        "Solicitante ID": "ID_DO_SOLICITANTE",
+        "Responsável ID": "ID_DO_RESPONSAVEL",
+        "Tags": "LISTA_DE_TAGS",
+        "Nome do Cliente": "NOME_DO_CLIENTE",
+        "CPF": "CPF_DO_CLIENTE",
     }
 
     # Exibir os dados do ticket
