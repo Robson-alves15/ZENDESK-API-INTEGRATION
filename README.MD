@@ -1,53 +1,51 @@
-# 🎫 Get API Zendesk - Consulta de Tickets via Python
+# Zendesk Ticket Fetcher
 
-Este projeto é um script em Python que realiza **requisições à API do Zendesk** para buscar e exibir informações detalhadas de um ticket específico. Ideal para integrações com sistemas internos ou análises automatizadas de chamados.
+Este projeto demonstra como realizar uma requisição segura à API do Zendesk para obter detalhes de um ticket específico.  
+O script utiliza Python com conexão HTTPS, autenticação via API Token e variáveis de ambiente para manter as credenciais seguras.
 
----
+## Funcionalidades
+- Conexão segura com o Zendesk usando `ssl` e `certifi`.
+- Autenticação via Basic Auth com email e token.
+- Carregamento de credenciais a partir de um arquivo `.env`.
+- Consulta de um ticket específico pelo seu ID.
+- Exibição dos principais campos do ticket em formato legível.
 
-## 🚀 Funcionalidades
-
-- Conecta-se com a API do Zendesk utilizando autenticação via token.
-- Busca um ticket específico por ID.
-- Filtra e exibe os principais dados do ticket:
-  - ID, Status, Prioridade, Assunto, Descrição
-  - Datas de criação e atualização
-  - Responsável, Solicitante
-  - Tags e campos personalizados (CPF e Nome do Cliente)
-
----
-
-## ⚙️ Pré-requisitos
-
-- Conta Zendesk com token de API ativo
-- Python 3.8 ou superior
-- Biblioteca `dotenv` para leitura de variáveis de ambiente
-- Certificado `certifi` para conexão HTTPS segura
-
----
-
-## 📦 Instalação
-
-Clone o repositório:
-
-```bash
-git clone https://github.com/Robalves-5/Get-API-Zendesk.git
-cd Get-API-Zendesk
+## Estrutura do Projeto
+.
+├── script.py        # Código principal para buscar ticket
+├── .env             # Arquivo com variáveis de ambiente
+├── requirements.txt # Dependências do projeto
+└── README.md        # Documentação
 
 
-├── Requisicao.py                         
-├── requeriments.txt      
-├── .gitignore            
-└── README.md  
+## Configuração
 
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seuusuario/zendesk-ticket-fetcher.git
+   cd zendesk-ticket-fetcher
+
+ZENDESK_SUBDOMAIN=seu_subdominio
+ZENDESK_EMAIL=seu_email
+ZENDESK_API_TOKEN=seu_token
+
+pip install -r requirements.txt
+
+Fazendo requisição para: https://SEU_SUBDOMINIO.zendesk.com/api/v2/tickets/101.json
 
 ===== Detalhes do Ticket Zendesk =====
 ID: 101
-Criado em: 2024-10-01T12:00:00Z
+Criado em: 2026-06-24T12:00:00Z
+Atualizado em: 2026-06-24T12:05:00Z
 Status: open
 Prioridade: high
-Assunto: Erro no sistema
-...
-
+Assunto: Exemplo de Ticket
+Descrição: Este é um ticket de teste
+Solicitante ID: ID_DO_SOLICITANTE
+Responsável ID: ID_DO_RESPONSAVEL
+Tags: LISTA_DE_TAGS
+Nome do Cliente: NOME_DO_CLIENTE
+CPF: CPF_DO_CLIENTE
 
 
 
